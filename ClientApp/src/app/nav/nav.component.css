@@ -1,0 +1,23 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 200px;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+}
+
+#content {
+  padding: 25px 50px;
+}
+
+.mat-toolbar.mat-primary {
+  z-index: 1;
+  -webkit-box-shadow: 0px 2px 10px 0px rgba(0,0,0,0.5);
+     -moz-box-shadow: 0px 2px 10px 0px rgba(0,0,0,0.5);
+          box-shadow: 0px 2px 10px 0px rgba(0,0,0,0.5);
+}

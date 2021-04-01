@@ -1,0 +1,95 @@
+<h1>Bot setup</h1>
+
+<div *ngIf="!members">
+  <h3>Loading the bots!</h3>
+  <mat-spinner></mat-spinner>
+</div>
+
+
+<div *ngIf="members">
+  <div *ngFor="let member of members">
+    <div>Image <img class="avatar" src="{{member.MemberData.AvatarUrl}}" alt="{{ member.MemberData.Initials }}" height="50%" width="auto"/> </div>
+    <div>
+      <h4>FullName: {{ member.MemberData.FullName }}</h4> <h6>UserName: {{ member.MemberData.UserName }}</h6>
+    </div>
+
+    <p *ngIf="!members"><em>Loading...</em></p>
+
+    <h4>Available bots</h4>
+
+    <div *ngIf="members">
+      <mat-card class="example-card" *ngFor="let board of member.TrellobotItemsForMember">
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title>Shiba Inu</mat-card-title>
+          <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+        </mat-card-header>
+        <blockquote class="trello-board-compact">
+          <a href="https://trello.com/b/{{board.BoardId}}">{{board.Name}}</a>
+        </blockquote>
+        <mat-card-content>
+          <p>
+            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+            A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+            bred for hunting.
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button>LIKE</button>
+          <button mat-button>SHARE</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>
+
+
+<table class='table' *ngIf="trellobots">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <!--th>AppKey</th-->
+      <!--th>Token</th-->
+      <th>BoardId</th>
+      <th>TemplateId</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let trellobot of trellobots" (click)=onClickTableRow(trellobot)>
+      <td>{{ trellobot.name }} <button mat-button color="primary" (click)=onClickDelete([trellobot.id])>Delete</button></td>
+      <!--td>{{ trellobot.appKey }}</td-->
+      <!--td>{{ trellobot.token }}</td-->
+      <td>{{ trellobot.boardId }}</td>
+      <td>{{ trellobot.templateId }}</td>
+    </tr>
+  </tbody>
+</table>
+<hr>
+
+<br>
+
+<br>
+
+<h3>Add another:</h3>
+<form [formGroup]="trellobotform" class="card-form-container" (ngSubmit)="onSubmit()">
+  <!--mat-form-field>
+    <input id="input" type="text"  formControlName="ID" matInput placeholder="ID"/><br />
+  </mat-form-field-->
+  <mat-form-field>
+    <input id="input" type="text" formControlName="name" matInput placeholder="Name" /><br />
+  </mat-form-field>
+  <!--mat-form-field>
+    <input type="text" formControlName="appKey" matInput placeholder="App key"/><br />
+  </mat-form-field-->
+  <!--mat-form-field>
+    <input type="text" formControlName="token" matInput placeholder="Token" /><br />
+  </mat-form-field-->
+  <mat-form-field>
+    <input type="text" formControlName="boardId" matInput placeholder="BoardID" /><br />
+  </mat-form-field>
+  <mat-form-field>
+    <input type="text" formControlName="templateId" matInput placeholder="TemplateId" /><br />
+  </mat-form-field>
+
+  <button type="submit" mat-flat-button>Submit</button>
+</form>

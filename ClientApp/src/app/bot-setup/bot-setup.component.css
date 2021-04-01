@@ -1,0 +1,27 @@
+.avatar {
+  border-radius: 50vh;
+  margin: 20px;
+  box-shadow: 3px 3px 20px 0px rgba(0,0,0,0.75);
+}
+
+.card-form-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  
+  .card-form-container > * {
+    width: 50%;
+  }
+  
+  .example-card {
+    display: inline-block;
+    flex-shrink: 1;
+    max-width: 300px;
+    margin: 20px;
+  }
+  
+  .example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+  }
